@@ -5,12 +5,21 @@ module ASCII_to_Morse(
     output reg       o_Valid
 );
 
+    reg [7:0] ASCII_lower;
+
     always @(*) begin
+        
+        // Convert uppercase 'A'-'Z' to lowercase 'a'-'z'
+        if (i_ASCII >= 8'h41 && i_ASCII <= 8'h5A)
+            ASCII_lower = i_ASCII + 8'd32;
+        else
+            ASCII_lower = i_ASCII;
+
         o_Morse_Pattern = 5'b00000;
         o_Morse_Length  = 3'd0;
         o_Valid         = 1'b0;
 
-        case(i_ASCII)
+        case(ASCII_lower)
             // Numbers 0-9
             8'h30: begin // '0'
                 o_Morse_Pattern = 5'b11111;
@@ -60,7 +69,7 @@ module ASCII_to_Morse(
             8'h39: begin // '9'
                 o_Morse_Pattern = 5'b11110;
                 o_Morse_Length  = 3'd5;
-                o_Valid         = 1
+                o_Valid         = 1'b1;
             end
             
             // Letters a-z
