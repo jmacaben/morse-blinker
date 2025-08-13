@@ -7,15 +7,13 @@ module Morse_to_Signal #(
     input  [2:0] i_Morse_Length,
     output reg   o_LED,              // Output register controlling the LED state (on/off)
     output reg   o_Done
-);
+);    
 
-    // Creating type to represent states of FSM
-    typedef enum reg [1:0] {
-        IDLE      = 2'b00,  // Waiting for start signal
-        ON_STATE  = 2'b01,
-        OFF_STATE = 2'b10,
-        DONE      = 2'b11
-    } state_t;
+    // Define states as parameters instead of enum
+    localparam IDLE      = 2'b00;
+    localparam ON_STATE  = 2'b01;
+    localparam OFF_STATE = 2'b10;
+    localparam DONE      = 2'b11;
 
     reg [1:0] state = IDLE;     // Variable to hold FSM state
     reg [22:0] cycle_count = 0; // Large enough to count UNIT_CYCLES
