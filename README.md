@@ -11,8 +11,8 @@ This design consists of several modules, along with their respective testbenches
 The top-level module, **Morse_Blinker_Top**, connects these components to receive characters, translate them to Morse, and blink the LED.
 
 ## Versions/Improvements
-- **Single-Letter Blinker**: The original version (Morse_Blinker_Top_v1.v) could blink one character at a time immediately upon receiving it.
-- **Message Blinker**: The current version (Morse_Blinker_Top_v2.v) buffers multiple characters, handles spaces between letters and words, and blinks an entire message.
+- **Single-Letter Blinker**: The original version (**Morse_Blinker_Top_v1.v**) could blink one character at a time immediately upon receiving it.
+- **Message Blinker**: The current version (**Morse_Blinker_Top_v2.v**) buffers multiple characters, handles spaces between letters and words, and blinks an entire message.
 
 ## Setup
 - **Device**: iCE40HX1K (Nandland Go Board)
